@@ -1,15 +1,29 @@
 <script setup>
+import { defineEmits } from 'vue'
+
 defineProps({
   msg: {
     type: String,
     required: true
   }
 })
+
+const emit = defineEmits(['customEvent'])
+
+const emitEvent = () => {
+  alert('ini Emitnya')
+}
+
+// const props = defineProps({
+//   msg: String
+// })
+
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
+    <button @click="emitEvent">Click Me</button>
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +

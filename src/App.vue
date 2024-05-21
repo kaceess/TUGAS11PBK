@@ -1,6 +1,14 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { defineEmits } from 'vue'
+import { ref } from 'vue'
+
+const message = ref('')
+
+const handleCustomEvent = (payload) => {
+  message.value = payload
+}
 </script>
 
 <template>
@@ -8,7 +16,11 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="You did it!" @customEvent="handleCustomEvent" />
+      <!-- <p>Message from HelloWorld: {{ message }}</p> -->
+
+      <!-- <button @click="emitEvent">Click Me</button> -->
+      <slot name="heading">Ini Slot</slot>
 
       <nav>
         <RouterLink to="/">Post</RouterLink>
